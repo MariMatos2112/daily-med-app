@@ -6,6 +6,10 @@ import { DrugsController } from './infrastructure/controllers/drugs.controller';
 import { DrugsModule } from './infrastructure/persistence/drugs/drugs.module';
 import { DrugEntity } from './infrastructure/persistence/drugs/drugs.entity';
 import { DrugsService } from './application/drugs/services/drugs.service';
+import { ScraperService } from './infrastructure/services/scraper.service';
+import { IndicationsController } from './infrastructure/controllers/indications.controller';
+import { Icd10Service } from './infrastructure/services/icd10.service';
+import { IndicationsService } from './application/indications/services/indications.service';
 
 @Module({
   imports: [
@@ -21,7 +25,13 @@ import { DrugsService } from './application/drugs/services/drugs.service';
     }),
     DrugsModule,
   ],
-  controllers: [AppController, DrugsController],
-  providers: [AppService, DrugsService],
+  controllers: [AppController, DrugsController, IndicationsController],
+  providers: [
+    AppService,
+    DrugsService,
+    IndicationsService,
+    ScraperService,
+    Icd10Service,
+  ],
 })
 export class AppModule {}
