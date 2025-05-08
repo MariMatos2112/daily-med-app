@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DrugEntity } from 'src/infrastructure/persistence/drugs/drugs.entity';
 import { Repository } from 'typeorm';
@@ -48,5 +48,12 @@ export class DrugsService {
 
   async getDrugById(id: string) {
     return await this.drugRepository.findOneBy({ id });
+  }
+
+  async deleteDrugById(id: string) {
+    const drug = await this.drugRepository.findOneBy({ id });
+    if (!drug) throw new NotFoundException('Drug not found');
+
+    return await this.drugRepository.delete(id);
   }
 }
