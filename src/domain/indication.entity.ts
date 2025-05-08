@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { DrugEntity } from '../drugs/drugs.entity';
+import { DrugEntity } from './drugs.entity';
 
 @Entity('drug_indications')
 export class DrugIndicationEntity {

@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RegisterDto } from 'src/application/auth/dto/auth.dto';
-import { UserEntity } from 'src/infrastructure/persistence/users/user.entity';
+import { UserEntity } from 'src/domain/user.entity';
 
 @Injectable()
 export class UsersService {

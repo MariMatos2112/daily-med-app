@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DrugEntity } from 'src/infrastructure/persistence/drugs/drugs.entity';
+import { DrugEntity } from 'src/domain/drugs.entity';
 import { Repository } from 'typeorm';
 import {
   DAILY_MED_BASE_URL,

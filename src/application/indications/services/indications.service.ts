@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DrugIndicationEntity } from 'src/infrastructure/persistence/indications/indication.entity';
+import { DrugIndicationEntity } from 'src/domain/indication.entity';
 import { Icd10Service } from 'src/infrastructure/services/icd10.service';
 import { ScraperService } from 'src/infrastructure/services/scraper.service';
 import { Repository } from 'typeorm';
