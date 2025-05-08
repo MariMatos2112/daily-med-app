@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/application/auth/guard/auth.guard';
 import { DrugDto } from 'src/application/drugs/dto/drugs.dto';
 import { DrugsService } from 'src/application/drugs/services/drugs.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('drugs')
 export class DrugsController {
   constructor(private readonly drugsService: DrugsService) {}

@@ -13,6 +13,14 @@ import { Icd10Service } from './infrastructure/services/icd10.service';
 import { IndicationsService } from './application/indications/services/indications.service';
 import { IndicationsModule } from './infrastructure/persistence/indications/indications.module';
 import { DrugIndicationEntity } from './infrastructure/persistence/indications/indication.entity';
+import { AuthController } from './infrastructure/controllers/auth.controller';
+import { AuthService } from './application/auth/services/auth.service';
+import { UsersService } from './application/users/services/users.service';
+import { UserEntity } from './infrastructure/persistence/users/user.entity';
+import { UsersModule } from './infrastructure/persistence/users/users.module';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './application/auth/strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -28,19 +36,33 @@ import { DrugIndicationEntity } from './infrastructure/persistence/indications/i
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [DrugEntity, DrugIndicationEntity], // Load your entities
+      entities: [DrugEntity, DrugIndicationEntity, UserEntity], // Load your entities
       synchronize: false, // Don't use this in production
+    }),
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET || 'your_jwt_secret', // Use an env variable or fallback to hardcoded value
+      signOptions: { expiresIn: '1d' }, // Set token expiration time
     }),
     DrugsModule,
     IndicationsModule,
+    UsersModule,
   ],
-  controllers: [AppController, DrugsController, IndicationsController],
+  controllers: [
+    AppController,
+    DrugsController,
+    IndicationsController,
+    AuthController,
+  ],
   providers: [
     AppService,
     DrugsService,
     IndicationsService,
     ScraperService,
     Icd10Service,
+    AuthService,
+    UsersService,
+    JwtStrategy,
   ],
 })
 export class AppModule {}

@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/application/auth/guard/auth.guard';
 import { IndicationDto } from 'src/application/indications/dto/indications.dto';
 import { IndicationsService } from 'src/application/indications/services/indications.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('indications')
 export class IndicationsController {
   constructor(private readonly indicationsService: IndicationsService) {}
