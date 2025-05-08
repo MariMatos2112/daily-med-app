@@ -21,6 +21,7 @@ import { UsersModule } from './infrastructure/persistence/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './application/auth/strategies/jwt.strategy';
+import { UserController } from './infrastructure/controllers/user.controller';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { JwtStrategy } from './application/auth/strategies/jwt.strategy';
     DrugsController,
     IndicationsController,
     AuthController,
+    UserController,
   ],
   providers: [
     AppService,
