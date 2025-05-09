@@ -84,3 +84,6 @@ Swagger documentation is available at: [http://localhost:3000/api#/](http://loca
 
 ## Unit Tests 🧪
 Jest unit tests were implemented with coverage greater than 90%. ✅
+
+## Postman Collection 📦
+The Postman collection is available in the root folder.
