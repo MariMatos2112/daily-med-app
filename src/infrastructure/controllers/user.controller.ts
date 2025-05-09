@@ -15,11 +15,14 @@ import { UpdateUserDto } from 'src/application/users/dto/users.dto';
 import { UsersService } from 'src/application/users/services/users.service';
 import { ApiService } from '../services/api.service';
 import { USER_MESSAGES } from 'src/common/constants/messages.constants';
+import { Role, Roles } from 'src/common/decorators/roles.decorator';
+import { RolesGuard } from 'src/application/auth/guard/roles.guard';
 
 const { USERS_GATHERED, USER_GATHERED, USER_UPDATED, USER_DELETED } =
   USER_MESSAGES;
 
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.Admin)
 @Controller('users')
 export class UserController {
   constructor(
