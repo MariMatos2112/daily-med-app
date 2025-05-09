@@ -13,10 +13,12 @@ import { DrugDto } from 'src/application/drugs/dto/drugs.dto';
 import { DrugsService } from 'src/application/drugs/services/drugs.service';
 import { DRUG_MESSAGES } from 'src/common/constants/messages.constants';
 import { ApiService } from '../services/api.service';
+import { RolesGuard } from 'src/application/auth/guard/roles.guard';
+import { Roles, Role } from 'src/common/decorators/roles.decorator';
 
 const { DRUGS_FOUND, DRUG_GATHERED, DRUG_SAVED, DRUG_DELETED } = DRUG_MESSAGES;
 
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('drugs')
 export class DrugsController {
   constructor(
@@ -42,6 +44,7 @@ export class DrugsController {
     return this.apiService.buildResponse(DRUG_GATHERED, drug);
   }
 
+  @Roles(Role.Admin)
   @Delete(':id')
   async deleteDrug(@Param('id') id: string) {
     await this.drugsService.deleteDrugById(id);

@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "576f3e4d-f6f6-425e-a5c2-fa570a5ac594",
+		"name": "daily_med_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"captain.america@marvel.com\",\n\t\"password\": \"marvel123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Captain America\",\n    \"email\": \"captain.america@marvel.com\",\n    \"password\": \"marvel123\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/408b172b-5976-48d5-bdb2-e7617ad8b7ac",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"408b172b-5976-48d5-bdb2-e7617ad8b7ac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/email/captain.america@marvel.com",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"email",
+								"captain.america@marvel.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-users-by-name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users?name=America",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "America"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Black Widow\",\n    \"email\": \"black.widow@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/users/408b172b-5976-48d5-bdb2-e7617ad8b7ac",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"408b172b-5976-48d5-bdb2-e7617ad8b7ac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users/f0f34afb-ffa2-489a-a36d-00d3e56903be",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users",
+								"f0f34afb-ffa2-489a-a36d-00d3e56903be"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "drugs",
+			"item": [
+				{
+					"name": "search-drug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/drugs/search?name=dupixent",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"drugs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "dupixent"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-drug",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"595f437d-2729-40bb-9c62-c8ece1f82780\",\n\t\"name\": \"DUPIXENT (DUPILUMAB) INJECTION, SOLUTION [SANOFI-AVENTIS U.S. LLC]\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/drugs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"drugs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/drugs/595f437d-2729-40bb-9c62-c8ece1f82780",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"drugs",
+								"595f437d-2729-40bb-9c62-c8ece1f82780"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-drug",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/drugs/595f437d-2729-40bb-9c62-c8ece1f82780",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"drugs",
+								"595f437d-2729-40bb-9c62-c8ece1f82780"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "indications",
+			"item": [
+				{
+					"name": "search-indication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/indications/search/595f437d-2729-40bb-9c62-c8ece1f82780",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"indications",
+								"search",
+								"595f437d-2729-40bb-9c62-c8ece1f82780"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-indication",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n\t\"drug_id\": \"595f437d-2729-40bb-9c62-c8ece1f82780\",\n\t\"icd_10_code\": \"L20.89\",\n\t\"name\": \"Atopic Dermatitis\",\n\t\"description\": \"DUPIXENT is indicated for the treatment of adult and pediatric patients aged 6 months and older with moderate-to-severe atopic dermatitis (AD) whose disease is not adequately controlled with topical prescription therapies or when those therapies are not advisable. DUPIXENT can be used with or without topical corticosteroids.\"\n},\n{\n\t\"drug_id\": \"595f437d-2729-40bb-9c62-c8ece1f82780\",\n\t\"icd_10_code\": \"J45.998\",\n\t\"name\": \"Asthma\",\n\t\"description\": \"DUPIXENT is indicated as an add-on maintenance treatment of adult and pediatric patients aged 6 years and older with moderate-to-severe asthma characterized by an eosinophilic phenotype or with oral corticosteroid dependent asthma [see Clinical Studies (14)].\"\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/indications",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"indications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4ZmIwMDlhYy03MDU0LTQ4YjAtYTAxNC1iMDY4ZGU2ZjZhMTEiLCJlbWFpbCI6ImNhcHRhaW4uYW1lcmljYUBtYXJ2ZWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDY3NTQ2NjUsImV4cCI6MTc0Njg0MTA2NX0.9xX41ZQpRTnTlqOjn3MjK3-gqOYbP2tIgJZoWQL7Gjs",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "localhost:3000",
+			"type": "default"
+		},
+		{
+			"key": "DAILY_MED_BASE_URL",
+			"value": "https://dailymed.nlm.nih.gov/dailymed/services/v2",
+			"type": "default"
+		}
+	]
+}
