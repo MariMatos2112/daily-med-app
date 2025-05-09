@@ -26,25 +26,24 @@ import { ApiService } from './infrastructure/services/api.service';
 
 @Module({
   imports: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     ConfigModule.forRoot({
-      isGlobal: true, // makes ConfigService available app-wide
-      envFilePath: '.env', // optional if using default `.env`
+      isGlobal: true,
+      envFilePath: '.env',
     }),
     TypeOrmModule.forRoot({
-      type: 'postgres', // or your DB type
-      host: process.env.DATABASE_HOST, // your DB host
-      port: parseInt(process.env.DATABASE_PORT || '5433'), // your DB port
+      type: 'postgres',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT || '5433'),
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [DrugEntity, DrugIndicationEntity, UserEntity], // Load your entities
-      synchronize: false, // Don't use this in production
+      entities: [DrugEntity, DrugIndicationEntity, UserEntity],
+      synchronize: false, // Do not use in production
     }),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'your_jwt_secret', // Use an env variable or fallback to hardcoded value
-      signOptions: { expiresIn: '1d' }, // Set token expiration time
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '1d' },
     }),
     DrugsModule,
     IndicationsModule,
