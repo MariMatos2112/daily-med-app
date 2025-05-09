@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { LoginDto, RegisterDto } from '../dto/auth.dto';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/application/users/services/users.service';
@@ -14,6 +14,8 @@ export class AuthService {
 
   async validateUser(body: LoginDto) {
     const user = await this.usersService.getByEmail(body.email);
+    if (!user) throw new NotFoundException('User not found');
+
     const isValid = await bcrypt.compare(body.password, user.password_hash);
     return isValid ? user : null;
   }
