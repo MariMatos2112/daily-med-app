@@ -16,6 +16,7 @@ This project is a microservice-based application designed to extract drug indica
   - Unmappable conditions
 - Stores mappings in a **relational database**
 - Queryable via a **RESTful API**
+- Well structured - DDD based
 
 ---
 
@@ -32,6 +33,8 @@ This project is a microservice-based application designed to extract drug indica
   - **Docker**
 
 ---
+![image](https://github.com/user-attachments/assets/1d673b9b-018c-4613-b3ed-5c91902e1e81)
+
 
 ### 🐳 Docker Run
 
@@ -81,9 +84,13 @@ npm run migration:run
 
 ## Documentation 📚
 Swagger documentation is available at: [http://localhost:3000/api#/](http://localhost:3000/api#/)
+![image](https://github.com/user-attachments/assets/da9d0ffa-48ad-4351-983a-e26d6b3617b6)
+
 
 ## Unit Tests 🧪
 Jest unit tests were implemented with coverage greater than 90%. ✅
 
 ## Postman Collection 📦
 The Postman collection is available in the root folder.
+![image](https://github.com/user-attachments/assets/2cdb2176-aba7-4459-9819-10597756f399)
+
