@@ -9,7 +9,6 @@ export class Icd10Service {
       params: { sf: 'code,name', terms: disease_name },
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const items = response.data[3] as string[][];
     if (items.length === 0) return null;
 
